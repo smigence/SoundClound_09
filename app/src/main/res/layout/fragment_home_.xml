@@ -37,7 +37,7 @@
             android:layout_height="@dimen/dp_180" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycer_genres"
+            android:id="@+id/recycer_all_music"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/viewpager_home"
