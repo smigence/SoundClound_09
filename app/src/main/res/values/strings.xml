@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SoundClound_09</string>
+    <string name="name_music">Name Music</string>
+    <string name="app_home">Home</string>
+    <string name="app_personl">My Music</string>
+    <string name="app_more">More</string>
 </resources>
