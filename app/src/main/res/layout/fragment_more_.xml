@@ -1,12 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".more.MoreFragment">
 
     <TextView
+        android:id="@+id/text_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dp_10"
+        android:text="@string/app_infomation"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/sp_20"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/linear_aboutapp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_accent" />
-</FrameLayout>
+        android:layout_height="@dimen/dp_50"
+        android:layout_below="@id/text_information"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_5"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_about_app" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/app_more_about"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/sp_20" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:layout_below="@id/linear_aboutapp"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_5">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_help" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/app_more_help"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/sp_20" />
+    </LinearLayout>
+</RelativeLayout>

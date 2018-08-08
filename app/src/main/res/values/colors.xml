@@ -6,4 +6,5 @@
     <color name="color_white">#ffffff</color>
     <color name="color_black">#000000</color>
     <color name="color_silver_chalice">#a7a7a7</color>
+    <color name="color_gray">#7e7d7d</color>
 </resources>

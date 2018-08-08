@@ -2,6 +2,11 @@
     <string name="app_name">SoundClound_09</string>
     <string name="name_music">Name Music</string>
     <string name="app_home">Home</string>
-    <string name="app_personl">My Music</string>
+    <string name="app_personl">Local Music</string>
     <string name="app_more">More</string>
+    <string name="app_personal_list">List</string>
+    <string name="app_personal_favorite">Favorite</string>
+    <string name="app_more_about">About App</string>
+    <string name="app_more_help">Help</string>
+    <string name="app_infomation">INFORMATION</string>
 </resources>
