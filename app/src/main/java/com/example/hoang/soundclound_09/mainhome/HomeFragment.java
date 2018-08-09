@@ -11,8 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hoang.soundclound_09.R;
+import com.example.hoang.soundclound_09.personal.LocalMusicContract;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements LocalMusicContract.View, AblumAdapter.ItemHomeMusicClickListener {
     public HomeFragment() {
     }
 
@@ -29,10 +30,22 @@ public class HomeFragment extends Fragment {
 
     private void initAllMusic(View view) {
         RecyclerView recyclerViewAllMusic = view.findViewById(R.id.recycer_all_music);
-        AblumAdapter ablumAdapter = new AblumAdapter(getActivity());
+        AblumAdapter ablumAdapter = new AblumAdapter(getActivity(), this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false);
         recyclerViewAllMusic.setLayoutManager(layoutManager);
         recyclerViewAllMusic.setAdapter(ablumAdapter);
+    }
+
+    @Override
+    public void showLocalMusic() {
+    }
+
+    @Override
+    public void onItemHomeMusicClick(int postition) {
+    }
+
+    @Override
+    public void onItemGenerMusicClick(int postition) {
     }
 }

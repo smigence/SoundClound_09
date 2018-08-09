@@ -12,9 +12,11 @@ import com.example.hoang.soundclound_09.R;
 
 public class AblumAdapter extends RecyclerView.Adapter<AblumAdapter.AblumAdapterHolder> {
     private Context mContext;
+    private ItemHomeMusicClickListener mItemHomeMusicClickListener;
 
-    public AblumAdapter(Context Context) {
+    public AblumAdapter(Context Context, ItemHomeMusicClickListener iteamHomeMusicClick) {
         this.mContext = Context;
+        this.mItemHomeMusicClickListener = iteamHomeMusicClick;
     }
 
     @NonNull
@@ -47,5 +49,10 @@ public class AblumAdapter extends RecyclerView.Adapter<AblumAdapter.AblumAdapter
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerViewDetailGenres.setLayoutManager(layoutManager);
         recyclerViewDetailGenres.setAdapter(ablumDetailAdapter);
+    }
+
+    public interface ItemHomeMusicClickListener {
+        void onItemHomeMusicClick(int postition);
+        void onItemGenerMusicClick(int postition);
     }
 }
