@@ -6,39 +6,50 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hoang.soundclound_09.R;
+import com.example.hoang.soundclound_09.data.Track;
+import com.example.hoang.soundclound_09.data.remote.Config;
+import com.example.hoang.soundclound_09.data.remote.TrackByGenreTask;
 import com.example.hoang.soundclound_09.personal.LocalMusicContract;
 
-public class HomeFragment extends Fragment implements LocalMusicContract.View, AblumAdapter.ItemHomeMusicClickListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class HomeFragment extends Fragment implements HomeMusicContract.View, AblumAdapter.ItemHomeMusicClickListener {
+
+    private String[] mGenres = {Config.GENRE_CLASSICAL,Config.GENRE_COUNTRY,Config.GENRE_AMBIENT};
+    private HomeMusicPresenter mHomeMusicPresenter;
+    private AblumAdapter ablumAdapter;
+    private List<List<Track>> mListTracks;
+
     public HomeFragment() {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home_, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_home_,
+                container, false);
+        mListTracks = new ArrayList<>();
+        mHomeMusicPresenter = new HomeMusicPresenter(this);
+        for (String genre:mGenres) {
+            mHomeMusicPresenter.loadGenreTracks(genre);
+        }
         initAllMusic(view);
+        return view;
     }
 
     private void initAllMusic(View view) {
         RecyclerView recyclerViewAllMusic = view.findViewById(R.id.recycer_all_music);
-        AblumAdapter ablumAdapter = new AblumAdapter(getActivity(), this);
+        ablumAdapter = new AblumAdapter(getActivity(), this, mGenres,mListTracks);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false);
         recyclerViewAllMusic.setLayoutManager(layoutManager);
         recyclerViewAllMusic.setAdapter(ablumAdapter);
-    }
-
-    @Override
-    public void showLocalMusic() {
     }
 
     @Override
@@ -47,5 +58,11 @@ public class HomeFragment extends Fragment implements LocalMusicContract.View, A
 
     @Override
     public void onItemGenerMusicClick(int postition) {
+    }
+
+    @Override
+    public void showListGenerMusic(List<Track> tracks) {
+        mListTracks.add(tracks);
+        ablumAdapter.notifyDataSetChanged();
     }
 }
